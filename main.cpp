@@ -1,20 +1,33 @@
 #include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <cstdlib>
+#include <fstream>
+#include <ctime>
+
 using namespace std;
 
-int main() {
-    int pecas = 500;
+struct Product
+{
+    int id;
+    int quantity;
+};
+
+void add_inventory(Product *ptr_prod) {
+    ptr_prod->quantity = ptr_prod->quantity + 500;
+}
+
+
+int main()
+{
     
-    // O PONTEIRO: Uma variável que guarda um endereço (o asterisco * diz isso)
-    int* endereco_das_pecas = &pecas;
+    Product chip = {1, 1000};
 
-    cout << "TITAN WAREHOUSE - ACESSO DIRETO" << endl;
-    cout << "Valor original: " << pecas << endl;
-
-    // A MÁGICA: Vamos mudar o valor usando o ponteiro (Desreferenciação)
-    *endereco_das_pecas = 999; 
-
-    cout << "Novo valor (mudado pelo endereco): " << pecas << endl;
-    cout << "Onde isso aconteceu? No endereco: " << endereco_das_pecas << endl;
+    
+    add_inventory(&chip);
+    std::cout << "TITAN WAREHOUSE - ACESSO VIA STRUCT" << std::endl;
+    std::cout << "ID: " << chip.id << " | Nova Quantidade: " << chip.quantity << std::endl;
 
     return 0;
 }
